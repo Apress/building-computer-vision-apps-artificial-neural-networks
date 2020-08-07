@@ -1,0 +1,15 @@
+%%shell
+mkdir computer_vision
+cd computer_vision
+git clone https://github.com/tensorflow/models.git
+
+cd models/research
+pwd
+protoc object_detection/protos/*.proto --python_out=.
+
+export PYTHONPATH=$PYTHONPATH:/content/computer_vision/models/research
+export PYTHONPATH=$PYTHONPATH:/content/computer_vision/models/research/slim
+
+
+python setup.py build
+python setup.py install

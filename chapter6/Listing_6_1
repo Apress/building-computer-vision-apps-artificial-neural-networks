@@ -1,0 +1,8 @@
+%%shell
+%tensorflow_version 1.x
+sudo apt-get install protobuf-compiler python-pil python-lxml python-tk
+pip install --user Cython
+pip install --user contextlib2
+pip install --user pillow
+pip install --user lxml
+pip install --user matplotlib

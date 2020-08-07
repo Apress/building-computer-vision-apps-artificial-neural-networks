@@ -1,0 +1,29 @@
+item {
+  id: 1
+  name: 'rolled-in_scale'
+}
+
+item {
+  id: 2
+  name: 'patches'
+}
+
+item {
+  id: 3
+  name: 'crazing'
+}
+
+item {
+  id: 4
+  name: 'pitted_surface'
+}
+
+item {
+  id: 5
+  name: 'inclusion'
+}
+
+item {
+  id: 6
+  name: 'scratches'
+}

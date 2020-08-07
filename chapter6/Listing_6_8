@@ -1,0 +1,2 @@
+%load_ext tensorboard
+%tensorboard --logdir /content/computer_vision/pet_detection_model

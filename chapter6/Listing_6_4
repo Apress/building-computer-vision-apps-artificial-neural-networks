@@ -1,0 +1,8 @@
+%%shell
+cd computer_vision
+cd models/research
+
+python object_detection/dataset_tools/create_pet_tf_record.py \
+    --label_map_path=object_detection/data/pet_label_map.pbtxt \
+    --data_dir=/content/computer_vision/petdata \
+    --output_dir=/content/computer_vision/petdata/
