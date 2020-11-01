@@ -14,3 +14,8 @@ Release v1.0 corresponds to the code in the published book, without corrections 
 ## Contributions
 
 See the file Contributing.md for more information on how you can contribute to this repository.
+
+# Book Value Proposition:
+- Contains real examples that you can implement and modify to build useful computer vision systems
+- Gives line-by-line explanations of computer vision working code examples  
+- Explains training neural networks involving large numbers of images on cloud infrastructure, such as Amazon AWS, Google Cloud Platform, and Microsoft Azure 
