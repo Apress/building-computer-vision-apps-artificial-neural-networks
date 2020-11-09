@@ -11,6 +11,14 @@ Download the files as a zip using the green button, or clone the repository to y
 
 Release v1.0 corresponds to the code in the published book, without corrections or updates.
 
+## Clone Instruction
+Clone repo with all history:
+git clone https://github.com/Apress/building-computer-vision-apps-artificial-neural-networks.git
+
+This will download all prior commit history. The overall size will be of the order of 1.4GB. If this causes any error, clone only the latest commit using the command:
+git clone https://github.com/Apress/building-computer-vision-apps-artificial-neural-networks.git --depth 1 
+
+
 ## Contributions
 
 See the file Contributing.md for more information on how you can contribute to this repository.
