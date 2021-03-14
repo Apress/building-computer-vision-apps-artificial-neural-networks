@@ -20,10 +20,10 @@ x_train, x_test = x_train / 255.0, x_test / 255.0
 
 # Build the ANN with 4-layers.
 model = tf.keras.models.Sequential([
-  tf.keras.layers.Flatten(input_shape=(28, 28)),
-  tf.keras.layers.Dense(128, activation='relu'),
-  tf.keras.layers.Dense(60, activation='relu'),
-  tf.keras.layers.Dense(10, activation='softmax')
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(60, activation='relu'),
+    tf.keras.layers.Dense(10, activation='softmax')
 ])
 
 # Compile the model and set optimizer,loss function and metrics
@@ -43,6 +43,5 @@ plt.ylabel('Percent')
 plt.show();
 
 # Evaluate the result using the test set.
-evalResult = model.evaluate(x_test,  y_test, verbose=1)
+evalResult = model.evaluate(x_test, y_test, verbose=1)
 print("Evaluation Result: ", evalResult)
-

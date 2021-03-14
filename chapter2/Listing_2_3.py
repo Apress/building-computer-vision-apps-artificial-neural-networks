@@ -11,12 +11,12 @@ start = (0, 0)
 end = (image.shape[1], image.shape[0])
 
 # set the color in BGR
-color = (255,0,0)
+color = (255, 0, 0)
 
 # set thickness in pixel
 thickness = 4
 cv2.line(image, start, end, color, thickness)
 
-#display the modified image
+# display the modified image
 cv2.imshow("Modified Image", image)
 cv2.waitKey(0)

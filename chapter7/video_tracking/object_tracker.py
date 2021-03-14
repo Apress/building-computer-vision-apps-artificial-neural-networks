@@ -21,11 +21,12 @@ labels_path = "./../model/mscoco_label_map.pbtxt"
 
 # List of the strings that is used to add correct label for each box.
 category_index = label_map_util.create_category_index_from_labelmap(labels_path, use_display_name=True)
-class_num =len(category_index)+100
+class_num = len(category_index) + 100
 object_ids = {}
 hasher_object = hasher.ObjectHasher()
 
-#Function to create color table for each object class
+
+# Function to create color table for each object class
 def get_color_table(class_num, seed=50):
     random.seed(seed)
     color_table = {}
@@ -33,10 +34,12 @@ def get_color_table(class_num, seed=50):
         color_table[i] = [random.randint(0, 255) for _ in range(3)]
     return color_table
 
+
 colortable = get_color_table(class_num)
 
 #  Initialize and start the asynchronous video capture thread
 cap = VideoCaptureAsync().start()
+
 
 # # Model preparation
 def load_model(model_path):
@@ -45,7 +48,9 @@ def load_model(model_path):
     model = model.signatures['serving_default']
     return model
 
+
 model = load_model(model_path)
+
 
 # Predict objects and bounding boxes and format the result
 def run_inference_for_single_image(model, image):
@@ -71,6 +76,7 @@ def run_inference_for_single_image(model, image):
 
     return output_dict
 
+
 # Function to draw bounding boxes and tracking information on the image frame
 def track_object(model, image_np):
     global object_ids, lock
@@ -89,27 +95,28 @@ def track_object(model, image_np):
             w = image_np.shape[1]
 
             classname = category_index[classes]['name']
-            classid =category_index[classes]['id']
+            classid = category_index[classes]['id']
 
-            #Draw bounding boxes
+            # Draw bounding boxes
             cv2.rectangle(image_np, (int(box[1] * w), int(box[0] * h)), (int(box[3] * w), int(box[2] * h)), colortable[classid], 2)
 
-            #Write the class name on top of the bounding box
+            # Write the class name on top of the bounding box
             font = cv2.FONT_HERSHEY_COMPLEX_SMALL
             hash, object_ids = hasher_object.getObjectId(image_np, int(box[1] * w), int(box[0] * h), int(box[3] * w),
-                                             int(box[2] * h), object_ids)
+                                                         int(box[2] * h), object_ids)
 
-            size = cv2.getTextSize(str(classname) + ":" + str(scores)+"[Id: "+str(object_ids.get(hash))+"]", font, 0.75, 1)[0][0]
+            size = cv2.getTextSize(str(classname) + ":" + str(scores) + "[Id: " + str(object_ids.get(hash)) + "]", font, 0.75, 1)[0][0]
 
-            cv2.rectangle(image_np,(int(box[1] * w), int(box[0] * h-20)), ((int(box[1] * w)+size+5), int(box[0] * h)), colortable[classid],-1)
-            cv2.putText(image_np, str(classname) + ":" + str(scores)+"[Id: "+str(object_ids.get(hash))+"]",
-                    (int(box[1] * w), int(box[0] * h)-5), font, 0.75, (0,0,0), 1, 1)
+            cv2.rectangle(image_np, (int(box[1] * w), int(box[0] * h - 20)), ((int(box[1] * w) + size + 5), int(box[0] * h)), colortable[classid], -1)
+            cv2.putText(image_np, str(classname) + ":" + str(scores) + "[Id: " + str(object_ids.get(hash)) + "]",
+                        (int(box[1] * w), int(box[0] * h) - 5), font, 0.75, (0, 0, 0), 1, 1)
 
-            cv2.putText(image_np, "Number of objects detected: "+str(len(object_ids)),
-                        (10,20), font, 0.75, (0, 0, 0), 1, 1)
+            cv2.putText(image_np, "Number of objects detected: " + str(len(object_ids)),
+                        (10, 20), font, 0.75, (0, 0, 0), 1, 1)
         else:
             break
     return image_np
+
 
 # Function to implement infinite while loop to read video frames and generate the output for web browser
 def streamVideo():
@@ -125,7 +132,7 @@ def streamVideo():
                     continue
 
                 yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
-                   bytearray(encodedImage) + b'\r\n')
+                       bytearray(encodedImage) + b'\r\n')
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             cap.stop()

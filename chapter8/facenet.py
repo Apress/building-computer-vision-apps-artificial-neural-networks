@@ -1,12 +1,9 @@
-
 # example of loading the keras facenet model
 import tensorflow.compat.v1 as tf
 from mtcnn import MTCNN
 
 tf.disable_v2_behavior()
 import cv2
-
-
 
 # load the model
 model = tf.keras.models.load_model('/Users/sansari/Downloads/keras-facenet/model/facenet_keras.h5')

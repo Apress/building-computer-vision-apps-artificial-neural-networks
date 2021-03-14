@@ -11,7 +11,7 @@ aspect = w / h
 # lets resize the image to  decrease height by half of the original image.
 # Remember, pixel values must be integers.
 height = int(0.5 * h)
-width =  int(height * aspect)
+width = int(height * aspect)
 
 # New image dimension as a tuple
 dimension = (height, width)

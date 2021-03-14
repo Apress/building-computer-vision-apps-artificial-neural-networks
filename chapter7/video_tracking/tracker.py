@@ -2,38 +2,38 @@
 import numpy as np
 import cv2
 
+
 class ObjectHasher:
-    def __init__(self, threshold=20, size=8, max_track_frame=10, radius_tracker=5):
+    def __init__(self, threshold=20, size=8, max_track_frame=10,
+                 radius_tracker=5):
         self.threshold = 20
         self.size = 8
         self.max_track_frame = 10
         self.radius_tracker = 5
 
     def getCenter(self, xmin, ymin, xmax, ymax):
-        x_center = int((xmin + xmax)/2)
-        y_center = int((ymin+ymax)/2)
+        x_center = int((xmin + xmax) / 2)
+        y_center = int((ymin + ymax) / 2)
         return (x_center, y_center)
 
-
     def getObjectId(self, image_np, xmin, ymin, xmax, ymax, hamming_dict={}):
-        croppedImage = self.getCropped(image_np,int(xmin*0.8), int(ymin*0.8), int(xmax*0.8), int(ymax*0.8))
+        croppedImage = self.getCropped(image_np, int(xmin * 0.8), int(ymin * 0.8), int(xmax * 0.8), int(ymax * 0.8))
         croppedImage = cv2.cvtColor(croppedImage, cv2.COLOR_BGR2GRAY)
 
         resizedImage = self.resize(croppedImage, self.size)
 
         hash = self.getHash(resizedImage)
-        center = self.getCenter(xmin*0.8, ymin*0.8, xmax*0.8, ymax*0.8)
+        center = self.getCenter(xmin * 0.8, ymin * 0.8, xmax * 0.8, ymax * 0.8)
 
         # hamming_dict = self.createHammingDict(hash, center, hamming_dict)
         hamming_dict = self.getObjectCounter(hash, hamming_dict)
         return hash, hamming_dict
 
-
     def getCropped(self, image_np, xmin, ymin, xmax, ymax):
         return image_np[ymin:ymax, xmin:xmax]
 
     def resize(self, cropped_image, size=8):
-        resized = cv2.resize(cropped_image, (size+1, size))
+        resized = cv2.resize(cropped_image, (size + 1, size))
         return resized
 
     def getHash(self, resized_image):
@@ -62,7 +62,7 @@ class ObjectHasher:
 
                     hd = self.hamming(dhash, key)
 
-                    if(hd < self.threshold):
+                    if (hd < self.threshold):
                         centers = hamming_dict.get(key)
                         if len(centers) > self.max_track_frame:
                             centers.pop(0)
@@ -76,7 +76,7 @@ class ObjectHasher:
             centers.append(center)
             hamming_dict[dhash] = centers
 
-        return  hamming_dict
+        return hamming_dict
 
     def getObjectCounter(self, dhash, hamming_dict):
         matched = False
@@ -94,7 +94,7 @@ class ObjectHasher:
             else:
                 for key in hamming_dict.keys():
                     hd = self.hamming(dhash, key)
-                    if(hd < self.threshold):
+                    if (hd < self.threshold):
                         if hd < lowest_hamming_dist:
                             lowest_hamming_dist = hd
                             matched = True
@@ -106,11 +106,8 @@ class ObjectHasher:
             del hamming_dict[matched_hash]
 
         hamming_dict[dhash] = object_counter
-        return  hamming_dict
+        return hamming_dict
 
-
-    def drawTrackingPoints(self, image_np, centers, color=(0,0,255)):
+    def drawTrackingPoints(self, image_np, centers, color=(0, 0, 255)):
         image_np = cv2.line(image_np, centers[0], centers[len(centers) - 1], color)
         return image_np
-
-

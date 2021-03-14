@@ -5,7 +5,7 @@ imagePath = "images/zebrasmall.png"
 image = cv2.imread(imagePath)
 (h,w) = image.shape[:2]
 
-#Define translation matrix
+# Define translation matrix
 center = (h//2, w//2)
 angle = -45
 scale = 1.0

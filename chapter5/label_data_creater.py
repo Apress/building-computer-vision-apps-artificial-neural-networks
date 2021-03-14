@@ -43,7 +43,6 @@ def get_ds(data_dir_str, batch_size=32, img_height=224, img_width=224):
     AUTOTUNE = tf.data.experimental.AUTOTUNE
     labeled_ds = list_ds.map(process_path, num_parallel_calls=AUTOTUNE)
 
-
     def prepare_for_training(ds, cache=True, shuffle_buffer_size=1000):
         # This is a small dataset, only load it once, and keep it in memory.
         # use `.cache(filename)` to cache preprocessing work for datasets that don't
@@ -66,7 +65,6 @@ def get_ds(data_dir_str, batch_size=32, img_height=224, img_width=224):
         ds = ds.prefetch(buffer_size=AUTOTUNE)
 
         return ds
-
 
     train_ds = prepare_for_training(labeled_ds, cache=True)
 

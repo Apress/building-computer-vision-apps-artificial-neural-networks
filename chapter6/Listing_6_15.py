@@ -16,14 +16,15 @@ model_path = "ssd_model/final_model"
 labels_path = "models/research/object_detection/data/pet_label_map.pbtxt"
 image_dir = "images"
 image_file_pattern = "*.jpg"
-output_path="output_dir"
+output_path = "output_dir"
 
 PATH_TO_IMAGES_DIR = pathlib.Path(image_dir)
 IMAGE_PATHS = sorted(list(PATH_TO_IMAGES_DIR.glob(image_file_pattern)))
 
 # List of the strings that is used to add correct label for each box.
 category_index = label_map_util.create_category_index_from_labelmap(labels_path, use_display_name=True)
-class_num =len(category_index)
+class_num = len(category_index)
+
 
 def get_color_table(class_num, seed=0):
     random.seed(seed)
@@ -32,19 +33,20 @@ def get_color_table(class_num, seed=0):
         color_table[i] = [random.randint(0, 255) for _ in range(3)]
     return color_table
 
+
 colortable = get_color_table(class_num)
+
 
 # # Model preparation and loading the model from the disk
 def load_model(model_path):
-
     model_dir = pathlib.Path(model_path) / "saved_model"
     model = tf.saved_model.load(str(model_dir))
     model = model.signatures['serving_default']
     return model
 
+
 # Predict objects and bounding boxes and format the result
 def run_inference_for_single_image(model, image):
-
     # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
     input_tensor = tf.convert_to_tensor(image)
 
@@ -98,24 +100,25 @@ def infer_object(model, image_path):
             h = image_np.shape[0]
             w = image_np.shape[1]
             classname = category_index[classes]['name']
-            classid =category_index[classes]['id']
+            classid = category_index[classes]['id']
 
-            #Draw bounding boxes
+            # Draw bounding boxes
             cv2.rectangle(image_np, (int(box[1] * w), int(box[0] * h)), (int(box[3] * w), int(box[2] * h)), colortable[classid], 2)
 
-            #Write the class name on top of the bounding box
+            # Write the class name on top of the bounding box
             font = cv2.FONT_HERSHEY_COMPLEX_SMALL
             size = cv2.getTextSize(str(classname) + ":" + str(scores), font, 0.75, 1)[0][0]
 
-            cv2.rectangle(image_np,(int(box[1] * w), int(box[0] * h-20)), ((int(box[1] * w)+size+5), int(box[0] * h)), colortable[classid],-1)
+            cv2.rectangle(image_np, (int(box[1] * w), int(box[0] * h - 20)), ((int(box[1] * w) + size + 5), int(box[0] * h)), colortable[classid], -1)
             cv2.putText(image_np, str(classname) + ":" + str(scores),
-                    (int(box[1] * w), int(box[0] * h)-5), font, 0.75, (0,0,0), 1, 1)
+                        (int(box[1] * w), int(box[0] * h) - 5), font, 0.75, (0, 0, 0), 1, 1)
         else:
             break
 
     # Save the result image with bounding boxes and class labels in file system
-    cv2.imwrite(output_path+"/"+imagename, image_np)
+    cv2.imwrite(output_path + "/" + imagename, image_np)
     # cv2.imshow(imagename, image_np)
+
 
 # Obtain the model object
 detection_model = load_model(model_path)

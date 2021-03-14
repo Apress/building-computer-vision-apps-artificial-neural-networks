@@ -8,11 +8,11 @@ image = cv2.imread(image_path)
 
 # set the start and end coordinates
 # of the top-left and bottom-right corners of the rectangle
-start = (100,70)
-end = (350,380)
+start = (100, 70)
+end = (350, 380)
 
 # Set the color and thickness of the outline
-color = (0,255,0)
+color = (0, 255, 0)
 thickness = 5
 
 # Draw the rectangle

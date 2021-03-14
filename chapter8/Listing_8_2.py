@@ -4,7 +4,7 @@ import requests
 
 VGG_FACE_URL = "http://zeus.robots.ox.ac.uk/vgg_face2/login/"
 IMAGE_URL = "http://zeus.robots.ox.ac.uk/vgg_face2/get_file?fname=vggface2_train.tar.gz"
-TEST_IMAGE_URL="http://zeus.robots.ox.ac.uk/vgg_face2/get_file?fname=vggface2_test.tar.gz"
+TEST_IMAGE_URL = "http://zeus.robots.ox.ac.uk/vgg_face2/get_file?fname=vggface2_test.tar.gz"
 
 print('Please enter your VGG Face 2 credentials:')
 user_string = input('    User: ')
