@@ -6,7 +6,8 @@ image2Path = "images/cat2.png"
 image1 = cv2.imread(image1Path)
 image2 = cv2.imread(image2Path)
 
-# resize the two images to make them of the same dimensions. This is a must to subtract two images
+# Images must be the same size to subtract them
+# Resize both images to the same dimensions
 resizedImage1 = cv2.resize(image1, (int(500 * image1.shape[1] / image1.shape[0]), 500), interpolation=cv2.INTER_AREA)
 resizedImage2 = cv2.resize(image2, (int(500 * image2.shape[1] / image2.shape[0]), 500), interpolation=cv2.INTER_AREA)
 

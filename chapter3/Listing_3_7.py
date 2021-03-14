@@ -12,7 +12,8 @@ image3 = cv2.imread(image3Path)
 image4 = cv2.imread(image4Path)
 image5 = cv2.imread(image5Path)
 
-# resize the two images to make them of the same dimension. This is a must to add two images
+# Images must be the same size to subtract them
+# Resize both images to the same dimensions
 resizedImage1 = cv2.resize(image1, (300, 300), interpolation=cv2.INTER_AREA)
 resizedImage2 = cv2.resize(image2, (300, 300), interpolation=cv2.INTER_AREA)
 resizedImage3 = cv2.resize(image3, (300, 500), interpolation=cv2.INTER_AREA)
