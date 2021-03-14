@@ -2,6 +2,7 @@ import cv2
 
 # Load an image
 image = cv2.imread("images/scanned_doc.png")
+
 # convert the image to grayscale
 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 cv2.imshow("Original Grayscale Receipt", image)

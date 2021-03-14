@@ -7,6 +7,7 @@ from tensorflow_core.python.framework.graph_io import write_graph
 
 print(tf.version.VERSION)
 model_path="/Users/sansari/Downloads/20180408-102900/"
+
 # # Model preparation
 def load_model(model_path):
     model_dir = pathlib.Path(model_path)
@@ -31,8 +32,10 @@ def convert_pb_to_pbtxt(filename):
 
 # convert_pb_to_pbtxt("/Users/sansari/Downloads/20180408-102900/20180408-102900.pb")
 image = cv2.imread("/Users/sansari/Downloads/test_images/catotherpets.jpg")
+
 # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
 input_tensor = tf.convert_to_tensor(image)
+
 # The model expects a batch of images, so add an axis with `tf.newaxis`.
 input_tensor = input_tensor[tf.newaxis, ...]
 

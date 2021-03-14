@@ -2,6 +2,7 @@ import argparse
 import configparser
 import json
 import os
+
 FLAGS = None
 
 tf_config = json.loads(json.dumps({

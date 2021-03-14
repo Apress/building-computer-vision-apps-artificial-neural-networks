@@ -3,6 +3,7 @@ from skimage import feature as sk
 
 #Load an image from the disk
 image = cv2.imread("images/obama.jpg")
+
 #Resize the image.
 image = cv2.resize(image,(int(image.shape[0]/5),int(image.shape[1]/5)))
 

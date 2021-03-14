@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+
 # Load an image
 image = cv2.imread("images/sudoku.jpg")
 cv2.imshow("Original Image", image)

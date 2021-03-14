@@ -38,6 +38,7 @@ class ObjectHasher:
 
     def getHash(self, resized_image):
         diff = resized_image[:, 1:] > resized_image[:, :-1]
+
         # convert the difference image to a hash
         dhash = sum([2 ** i for (i, v) in enumerate(diff.flatten()) if v])
         return int(np.array(dhash, dtype="float64"))

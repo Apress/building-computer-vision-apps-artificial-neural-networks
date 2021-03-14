@@ -9,8 +9,10 @@ test_img_dir ="images/chest_xray/test"
 # ImageDataGenerator class provides mechaism to load both small and large dataset.
 # Instruct ImageDataGenerator to scale to normalize pixel values to range (0, 1)
 datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1./255.)
+
 #Create training image iterator that will be loaded in small batch size. Resize all images to a standard sizes.
 train_it = datagen.flow_from_directory(trainig_img_dir, batch_size=8, target_size=(1024,1024))
+
 #Create training image iterator that will be loaded in small batch size. Resize all images to a standard sizes.
 test_it = datagen.flow_from_directory(test_img_dir, batch_size=8, target_size=(1024, 1024))
 
@@ -21,6 +23,7 @@ test_images, test_labels = test_it.next()
 print('Batch shape=%s, min=%.3f, max=%.3f' % (train_images.shape, train_images.min(), train_images.max()))
 
 # Section 2: Build CNN network and train with training dataset.
+
 # You could pass argument parameters to build_cnn() function to set some of the values
 # such as number of filters, strides, activation function, number of layers etc.
 def build_cnn():
@@ -37,6 +40,7 @@ def build_cnn():
 
 # Build CNN model
 model = build_cnn()
+
 #Compile the model with optimizer and loss function
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',

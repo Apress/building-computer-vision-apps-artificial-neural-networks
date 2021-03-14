@@ -4,6 +4,7 @@ import random
 import numpy as np
 import tensorflow as tf
 import cv2
+
 # Import the object detection module.
 from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
@@ -46,6 +47,7 @@ def run_inference_for_single_image(model, image):
 
     # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
     input_tensor = tf.convert_to_tensor(image)
+
     # The model expects a batch of images, so add an axis with `tf.newaxis`.
     input_tensor = input_tensor[tf.newaxis, ...]
 
@@ -97,6 +99,7 @@ def infer_object(model, image_path):
             w = image_np.shape[1]
             classname = category_index[classes]['name']
             classid =category_index[classes]['id']
+
             #Draw bounding boxes
             cv2.rectangle(image_np, (int(box[1] * w), int(box[0] * h)), (int(box[3] * w), int(box[2] * h)), colortable[classid], 2)
 
@@ -109,6 +112,7 @@ def infer_object(model, image_path):
                     (int(box[1] * w), int(box[0] * h)-5), font, 0.75, (0,0,0), 1, 1)
         else:
             break
+
     # Save the result image with bounding boxes and class labels in file system
     cv2.imwrite(output_path+"/"+imagename, image_np)
     # cv2.imshow(imagename, image_np)

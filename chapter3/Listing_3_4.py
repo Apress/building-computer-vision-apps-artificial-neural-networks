@@ -13,6 +13,7 @@ cv2.waitKey(-1)
 flippedVertically = cv2.flip(image, 0)
 cv2.imshow("Flipped Vertically", flippedVertically)
 cv2.waitKey(-1)
+
 # Flip horizontally and then vertically
 flippedHV = cv2.flip(image, -1)
 cv2.imshow("Flipped H and V", flippedHV)

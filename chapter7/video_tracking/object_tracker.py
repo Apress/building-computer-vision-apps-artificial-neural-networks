@@ -51,6 +51,7 @@ model = load_model(model_path)
 def run_inference_for_single_image(model, image):
     # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
     input_tensor = tf.convert_to_tensor(image)
+
     # The model expects a batch of images, so add an axis with `tf.newaxis`.
     input_tensor = input_tensor[tf.newaxis, ...]
 
@@ -89,6 +90,7 @@ def track_object(model, image_np):
 
             classname = category_index[classes]['name']
             classid =category_index[classes]['id']
+
             #Draw bounding boxes
             cv2.rectangle(image_np, (int(box[1] * w), int(box[0] * h)), (int(box[3] * w), int(box[2] * h)), colortable[classid], 2)
 
