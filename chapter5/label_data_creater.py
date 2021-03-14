@@ -9,7 +9,6 @@ print(tf.__version__)
 def get_ds(data_dir_str, batch_size=32, img_height=224, img_width=224):
     data_dir = pathlib.Path(data_dir_str)
     image_count = len(list(data_dir.glob('*/*')))
-    STEPS_PER_EPOCH = np.ceil(image_count / batch_size)
     # compute the class name from the dir
     class_names = np.array([item.name for item in data_dir.glob('*')])
 

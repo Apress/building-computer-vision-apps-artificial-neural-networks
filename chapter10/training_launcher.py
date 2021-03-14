@@ -71,7 +71,6 @@ def train():
         for host in master:
             parts = host.split(":")
             h = parts[0]
-            p = parts[1]
             get_tf_config("chief", counter)
             cmd = get_launch_command(FLAGS.python_script_path, h)
             print(cmd)
@@ -82,7 +81,6 @@ def train():
         for host in workers:
             parts = host.split(":")
             h = parts[0]
-            p = parts[1]
             get_tf_config("worker", counter)
             cmd = get_launch_command(FLAGS.python_script_path, h)
             print(cmd)
@@ -93,7 +91,6 @@ def train():
         for host in ps:
             parts = host.split(":")
             h = parts[0]
-            p = parts[1]
             get_tf_config("ps", counter)
             cmd = get_launch_command(FLAGS.python_script_path, h)
             print(cmd)

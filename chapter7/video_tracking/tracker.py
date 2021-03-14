@@ -23,7 +23,6 @@ class ObjectHasher:
         resizedImage = self.resize(croppedImage, self.size)
 
         hash = self.getHash(resizedImage)
-        center = self.getCenter(xmin * 0.8, ymin * 0.8, xmax * 0.8, ymax * 0.8)
 
         # hamming_dict = self.createHammingDict(hash, center, hamming_dict)
         hamming_dict = self.getObjectCounter(hash, hamming_dict)
@@ -50,7 +49,6 @@ class ObjectHasher:
     def createHammingDict(self, dhash, center, hamming_dict):
         centers = []
         matched = False
-        matched_hash = dhash
         # matched_classid = classid
 
         if hamming_dict.__len__() > 0:
@@ -86,7 +84,6 @@ class ObjectHasher:
 
         if len(hamming_dict) > 0:
             if dhash in hamming_dict:
-                lowest_hamming_dist = 0
                 matched_hash = dhash
                 object_counter = hamming_dict.get(dhash)
                 matched = True
