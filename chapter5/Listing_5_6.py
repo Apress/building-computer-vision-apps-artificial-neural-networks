@@ -40,7 +40,7 @@ plt.plot(trained_model.history['accuracy'], 'b-')
 plt.legend(['Training Loss', 'Training Accuracy'])
 plt.xlabel('Epoch')
 plt.ylabel('Percent')
-plt.show();
+plt.show()
 
 # Evaluate the result using the test set.
 evalResult = model.evaluate(x_test, y_test, verbose=1)
