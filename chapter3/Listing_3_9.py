@@ -11,7 +11,8 @@ maskImage = cv2.rectangle(np.zeros(natureImage.shape[:2], dtype="uint8"),
 cv2.imshow("Mask Image", maskImage)
 cv2.waitKey(0)
 
-# Using bitwise_and operation perform masking. Notice the mask=maskImage argument
+# Use bitwise_and operation to perform masking.
+# Notice the mask=maskImage argument
 masked = cv2.bitwise_and(natureImage, natureImage, mask=maskImage)
 cv2.imshow("Masked image", masked)
 cv2.waitKey(0)

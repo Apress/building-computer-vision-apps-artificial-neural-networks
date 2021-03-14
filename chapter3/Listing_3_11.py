@@ -1,11 +1,10 @@
 import cv2
-import numpy as np
 
 # Load the image
 natureImage = cv2.imread("images/nature.jpg")
 
 # Split the image into component colors
-(b,g,r) = cv2.split(natureImage)
+(b, g, r) = cv2.split(natureImage)
 
 # show the blue image
 cv2.imshow("Blue Image", b)
@@ -16,6 +15,6 @@ cv2.imshow("Green image", g)
 # Show the red image
 cv2.imshow("Red image", r)
 
-merged = cv2.merge([b,g,r])
+merged = cv2.merge([b, g, r])
 cv2.imshow("Merged Image", merged)
 cv2.waitKey(0)

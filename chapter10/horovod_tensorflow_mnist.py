@@ -15,18 +15,17 @@ if gpus:
 mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-#Noramalize the pixel values by deviding each pixel by 255
+# Normalize the pixel values by dividing each pixel by 255
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
 BUFFER_SIZE = len(x_train)
 BATCH_SIZE_PER_REPLICA = 16
 GLOBAL_BATCH_SIZE = BATCH_SIZE_PER_REPLICA * 2
 EPOCHS = 100
-STEPS_PER_EPOCH = int(BUFFER_SIZE/EPOCHS)
+STEPS_PER_EPOCH = int(BUFFER_SIZE / EPOCHS)
 
-train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train)).repeat().shuffle(BUFFER_SIZE).batch(GLOBAL_BATCH_SIZE,drop_remainder=True)
+train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train)).repeat().shuffle(BUFFER_SIZE).batch(GLOBAL_BATCH_SIZE, drop_remainder=True)
 test_dataset = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(GLOBAL_BATCH_SIZE)
-
 
 mnist_model = tf.keras.Sequential([
     tf.keras.layers.Conv2D(32, [3, 3], activation='relu'),

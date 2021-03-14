@@ -1,8 +1,8 @@
-from __future__ import print_function
 import cv2
 
 # image path
 image_path = "images/marsrover.png"
+
 # Read or load image from its path
 image = cv2.imread(image_path)
 

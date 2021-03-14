@@ -12,5 +12,4 @@ cv2.imshow("Blurred image 3", blurredImage3)
 blurredImage5 = cv2.medianBlur(saltpepperImage, 5)
 cv2.imshow("Blurred image 5", blurredImage5)
 
-
-cv2.waitKey(0) 
+cv2.waitKey(0)

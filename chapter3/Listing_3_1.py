@@ -1,19 +1,19 @@
-from __future__ import print_function
 import cv2
-import numpy as np
 
 # Load image
 imagePath = "images/zebra.png"
 image = cv2.imread(imagePath)
 
-# Get image shape which returns height, width, and channels as a tuple. Calculate the aspect ratio
+# Get image shape which returns height, width, and channels as a tuple.
 (h, w) = image.shape[:2]
+
+# Calculate the aspect ratio
 aspect = w / h
 
 # lets resize the image to  decrease height by half of the original image.
 # Remember, pixel values must be integers.
 height = int(0.5 * h)
-width =  int(height * aspect)
+width = int(height * aspect)
 
 # New image dimension as a tuple
 dimension = (height, width)

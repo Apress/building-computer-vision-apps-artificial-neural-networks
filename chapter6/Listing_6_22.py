@@ -20,8 +20,7 @@ def xml_to_csv(path, img_path, label_path):
             print("index: ", index)
             classname = imagename[0:index]
 
-            class_index = 0
-            if (class_list.count(classname) > 0):
+            if class_list.count(classname) > 0:
                 class_index = class_list.index(classname)
 
             else:
@@ -40,10 +39,8 @@ def xml_to_csv(path, img_path, label_path):
             dh = 1.0 / h
             x = (float(member[4][0].text) + float(member[4][2].text)) / 2.0 - 1
             y = (float(member[4][1].text) + float(member[4][3].text)) / 2.0 - 1
-            w = float(member[4][2].text) - float(member[4][0].text)
             h = float(member[4][3].text) - float(member[4][1].text)
             x = x * dw
-            w = w * dw
             y = y * dh
             h = h * dh
 
