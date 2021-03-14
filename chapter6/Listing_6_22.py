@@ -21,7 +21,7 @@ def xml_to_csv(path, img_path, label_path):
             classname = imagename[0:index]
 
             class_index = 0
-            if (class_list.count(classname) > 0):
+            if class_list.count(classname) > 0:
                 class_index = class_list.index(classname)
 
             else:

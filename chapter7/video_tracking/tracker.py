@@ -14,7 +14,7 @@ class ObjectHasher:
     def getCenter(self, xmin, ymin, xmax, ymax):
         x_center = int((xmin + xmax) / 2)
         y_center = int((ymin + ymax) / 2)
-        return (x_center, y_center)
+        return x_center, y_center
 
     def getObjectId(self, image_np, xmin, ymin, xmax, ymax, hamming_dict={}):
         croppedImage = self.getCropped(image_np, int(xmin * 0.8), int(ymin * 0.8), int(xmax * 0.8), int(ymax * 0.8))
@@ -62,7 +62,7 @@ class ObjectHasher:
 
                     hd = self.hamming(dhash, key)
 
-                    if (hd < self.threshold):
+                    if hd < self.threshold:
                         centers = hamming_dict.get(key)
                         if len(centers) > self.max_track_frame:
                             centers.pop(0)
@@ -94,7 +94,7 @@ class ObjectHasher:
             else:
                 for key in hamming_dict.keys():
                     hd = self.hamming(dhash, key)
-                    if (hd < self.threshold):
+                    if hd < self.threshold:
                         if hd < lowest_hamming_dist:
                             lowest_hamming_dist = hd
                             matched = True
