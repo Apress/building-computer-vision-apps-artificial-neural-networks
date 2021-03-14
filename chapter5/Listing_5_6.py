@@ -15,7 +15,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
 mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-# Noramalize the pixel values by deviding each pixel by 255.
+# Normalize the pixel values by dividing each pixel by 255.
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
 # Build the ANN with 4-layers.

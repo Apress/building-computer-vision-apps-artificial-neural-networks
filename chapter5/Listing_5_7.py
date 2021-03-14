@@ -2,15 +2,15 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 # Section1: Loading images from directories for training and test
-trainig_img_dir = "images/chest_xray/train"
+training_img_dir = "images/chest_xray/train"
 test_img_dir = "images/chest_xray/test"
 
-# ImageDataGenerator class provides mechaism to load both small and large dataset.
+# ImageDataGenerator class provides mechanism to load both small and large dataset.
 # Instruct ImageDataGenerator to scale to normalize pixel values to range (0, 1)
 datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1. / 255.)
 
 # Create training image iterator that will be loaded in small batch size. Resize all images to a standard sizes.
-train_it = datagen.flow_from_directory(trainig_img_dir, batch_size=8, target_size=(1024, 1024))
+train_it = datagen.flow_from_directory(training_img_dir, batch_size=8, target_size=(1024, 1024))
 
 # Create training image iterator that will be loaded in small batch size. Resize all images to a standard sizes.
 test_it = datagen.flow_from_directory(test_img_dir, batch_size=8, target_size=(1024, 1024))

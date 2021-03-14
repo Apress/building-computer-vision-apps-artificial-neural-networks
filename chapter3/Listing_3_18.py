@@ -15,5 +15,5 @@ cv2.imshow("Binarized Receipt", binarizedImage)
 # Binarization with inverse thresholding
 (Ti, inverseBinarizedImage) = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
 cv2.imshow("Inverse Binarized Receipt", inverseBinarizedImage)
-print("Threshold value with Otsu inverse binazarion", Ti)
+print("Threshold value with Otsu inverse binarization", Ti)
 cv2.waitKey(0)

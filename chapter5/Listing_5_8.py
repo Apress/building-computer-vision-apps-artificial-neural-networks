@@ -3,7 +3,7 @@ import tensorflow as tf
 model_path = "models/pneumiacnn"
 val_img_dir = "images/chest_xray/val"
 
-# ImageDataGenerator class provides mechaism to load both small and large dataset.
+# ImageDataGenerator class provides mechanism to load both small and large dataset.
 # Instruct ImageDataGenerator to scale to normalize pixel values to range (0, 1)
 datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1. / 255.)
 

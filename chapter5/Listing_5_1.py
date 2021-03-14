@@ -16,7 +16,7 @@ an_initialized_matrix = tf.Variable([[2, 4], [5, 25]])
 rank = tf.rank(a_tensor)
 shape = tf.shape(a_tensor)
 
-# Create a constant initiaized with a fixed value.
+# Create a constant initialized with a fixed value.
 a_constant_tensor = tf.constant(123.100)
 print(a_constant_tensor)
 tf.print(a_constant_tensor)

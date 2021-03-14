@@ -4,7 +4,7 @@ import cv2
 parkImage = cv2.imread("images/park.jpg")
 cv2.imshow("Original Image", parkImage)
 
-# Gaussian blurring with 3x3 kernel height and 0 for standard deviation to calculate from the kernel
+# Gaussian blurring with 5x5 kernel height and 0 for standard deviation to calculate from the kernel
 GaussianFiltered = cv2.GaussianBlur(parkImage, (5, 5), 0)
 cv2.imshow("Gaussian Blurred Image", GaussianFiltered)
 

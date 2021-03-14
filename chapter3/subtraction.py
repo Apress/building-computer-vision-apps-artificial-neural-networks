@@ -24,10 +24,10 @@ cv2.waitKey(-1)
 
 # Numpy Subtraction Cat2 from Cat1
 subtractedImage2 = resizedImage2 - resizedImage1
-cv2.imshow("Numpy Subracts Images", subtractedImage2)
+cv2.imshow("Numpy Subtracts Images", subtractedImage2)
 cv2.waitKey(-1)
 
 # A constant subtraction
 subtractedImage3 = resizedImage1 - 50
-cv2.imshow("Constant Subracted from the image", subtractedImage3)
+cv2.imshow("Constant Subtracted from the image", subtractedImage3)
 cv2.waitKey(-1)
