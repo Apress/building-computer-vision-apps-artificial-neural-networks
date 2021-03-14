@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 # Load the park image
 parkImage = cv2.imread("images/park.jpg")

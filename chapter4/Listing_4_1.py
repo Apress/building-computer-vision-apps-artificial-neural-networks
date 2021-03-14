@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from matplotlib import pyplot as plot
 
 # Read an image and convert it to grayscale

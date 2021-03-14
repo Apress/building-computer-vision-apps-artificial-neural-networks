@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 
 image1Path = "images/cat1.png"

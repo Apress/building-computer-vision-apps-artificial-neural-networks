@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from skimage import feature as sk
 
 #Load an image from the disk

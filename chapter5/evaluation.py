@@ -1,7 +1,7 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
-import sys
+
 tf.executing_eagerly()
 
 # Load MNIST data using built-in datasets download function

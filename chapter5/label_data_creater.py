@@ -1,12 +1,7 @@
 import tensorflow as tf
 import numpy as np
-import IPython.display as display
-from PIL import Image, PpmImagePlugin
-import matplotlib.pyplot as plt
 import os
 import pathlib
-import glob
-import cv2
 
 print(tf.__version__)
 

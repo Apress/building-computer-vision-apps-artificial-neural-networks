@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 # Load an image
 image = cv2.imread("images/scanned_doc.png")

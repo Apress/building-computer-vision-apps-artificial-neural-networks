@@ -1,7 +1,6 @@
 import argparse
 
 import tensorflow as tf
-# import keras
 
 strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
 

@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 # Load image
 imagePath = "images/zebra.png"

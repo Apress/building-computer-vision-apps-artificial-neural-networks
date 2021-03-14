@@ -1,4 +1,3 @@
-import os
 import pathlib
 import random
 import numpy as np
@@ -7,7 +6,6 @@ import cv2
 import threading
 
 # Import the object detection module.
-from object_detection.utils import ops as utils_ops
 from object_detection.utils import label_map_util
 
 from videoasync import VideoCaptureAsync
